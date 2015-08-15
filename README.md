@@ -20,7 +20,7 @@ In the router you call `this.hellgate(route, url)` to define the name of the rou
 // app/router.js
 Router.map(function() {
   this.hellgate('some-page', '/somepage.html');
-  this.hellgate('my-search', 'http://google.com.br');
+  this.hellgate('my-search', 'http://apple.com');
 });
 ```
 
