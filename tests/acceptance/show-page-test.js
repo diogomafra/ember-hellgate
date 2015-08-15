@@ -12,51 +12,53 @@ module('Acceptance: show page', {
 });
 
 test('displays the correct page', function(assert) {
-  assert.expect(4);
-
   visit('/test1');
   andThen(function() {
-    assert.equal(find('iframe').attr('src'), '/test1.html');
-    assert.equal(find("iframe").contents().find('span').text(), 'My first test');
+    iframeHasUrlWithContent(assert, '/test1.html', 'My first test');
   });
 
   visit('/test2');
   andThen(function() {
-    assert.equal(find('iframe').attr('src'), '/test2.html');
-    assert.equal(find("iframe").contents().find('span').text(), 'My second test');
+    iframeHasUrlWithContent(assert, '/test2.html', 'My second test');
   });
 });
 
 
 test('navigates through links', function(assert) {
-  assert.expect(4);
-
   visit('/');
   click('a.link2');
   andThen(function() {
-    assert.equal(find('iframe').attr('src'), '/test2.html');
-    assert.equal(find("iframe").contents().find('span').text(), 'My second test');
+    iframeHasUrlWithContent(assert, '/test2.html', 'My second test');
   });
 
   visit('/');
   click('a.link1');
   andThen(function() {
-    assert.equal(find('iframe').attr('src'), '/test1.html');
-    assert.equal(find("iframe").contents().find('span').text(), 'My first test');
+    iframeHasUrlWithContent(assert, '/test1.html', 'My first test');
   });
 });
 
 
 test('allows to escape hell', function(assert) {
-  assert.expect(2);
-
   visit('/test1');
   andThen(function() {
-    assert.equal(find('#the-message').text(), '');
+    Ember.run.later(() => {
+      assert.equal(find('#the-message').text(), '');
+    }, 100);
   });
 
   visit('/escape');
   andThen(function() {
-    assert.equal(find('#the-message').text(), 'hello');
+    Ember.run.later(() => {
+      assert.equal(find('#the-message').text(), 'hello');
+    }, 100);
   });
 });
+
+function iframeHasUrlWithContent(assert, url, content) {
+  // TODO: instead of waiting 200ms, check when the iframe has loaded.
+  Ember.run.later(() => {
+    assert.equal(find('iframe').attr('src'), url);
+    assert.equal(find("iframe").contents().find('span').text(), content);
+  }, 100);
+}
