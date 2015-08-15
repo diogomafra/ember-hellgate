@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/diogomafra/ember-hellgate.svg?branch=master)](https://travis-ci.org/diogomafra/ember-hellgate)
+
 # Ember-hellgate
 
 This README outlines the details of collaborating on this Ember addon.
