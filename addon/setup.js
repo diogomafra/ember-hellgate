@@ -27,6 +27,12 @@ function setupHellgate() {
         container.register(`controller:${moduleName}`, HellgateController.extend({url: url}));
       });
 
+      window.escapeHell = (...args) => {
+        Ember.run(() => {
+          this.send(...args);
+        });
+      };
+
       return ret;
     }
   });

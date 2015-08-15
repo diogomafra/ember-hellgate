@@ -45,3 +45,18 @@ test('navigates through links', function(assert) {
     assert.equal(find("iframe").contents().find('span').text(), 'My first test');
   });
 });
+
+
+test('allows to escape hell', function(assert) {
+  assert.expect(2);
+
+  visit('/test1');
+  andThen(function() {
+    assert.equal(find('#the-message').text(), '');
+  });
+
+  visit('/escape');
+  andThen(function() {
+    assert.equal(find('#the-message').text(), 'hello');
+  });
+});
