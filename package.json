@@ -1,7 +1,7 @@
 {
   "name": "ember-hellgate",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.0",
+  "description": "This addon helps you migrate an old application to Ember. It lets you define routes that load plain html pages inside an Ember app.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,11 +11,11 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/diogomafra/ember-hellgate",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Diogo Edegar Mafra",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.1.2",
