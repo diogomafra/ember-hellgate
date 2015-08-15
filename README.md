@@ -1,6 +1,4 @@
-# Ember-hellgate
-
-[![Build Status](https://travis-ci.org/diogomafra/ember-hellgate.svg?branch=master)](https://travis-ci.org/diogomafra/ember-hellgate)
+# ember-hellgate [![Build Status](https://travis-ci.org/diogomafra/ember-hellgate.svg?branch=master)](https://travis-ci.org/diogomafra/ember-hellgate)
 
 This addon helps you migrate an old application to Ember. It lets you define routes that load plain html pages inside an Ember app.
 
