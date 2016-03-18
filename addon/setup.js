@@ -1,8 +1,9 @@
 import Ember from 'ember';
 import HellgateController from './controller';
-import HellgateView from './view';
+import template from "ember-hellgate/templates/view";
+import getOwner from 'ember-getowner-polyfill';
 
-let dasherize = Ember.String.dasherize;
+const dasherize = Ember.String.dasherize;
 
 let gates = [];
 
@@ -16,15 +17,15 @@ function setupHellgate() {
   Ember.Router.reopen({
     setupRouter() {
       let ret = this._super(...arguments);
-      let container = this.container;
+      let owner = getOwner(this)
 
       gates.forEach(tuple => {
         let name = tuple[0];
         let url = tuple[1];
         let moduleName = dasherize(name);
 
-        container.register(`view:${moduleName}`, HellgateView.extend({}));
-        container.register(`controller:${moduleName}`, HellgateController.extend({url: url}));
+        owner.register(`template:${moduleName}`, template);
+        owner.register(`controller:${moduleName}`, HellgateController.extend({url: url}));
       });
 
       window.escapeHell = (...args) => {
