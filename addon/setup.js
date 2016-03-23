@@ -3,33 +3,33 @@ import HellgateController from './controller';
 import template from "ember-hellgate/templates/view";
 import getOwner from 'ember-getowner-polyfill';
 
-const dasherize = Ember.String.dasherize;
+const {Router, RouterDSL, String, run} = Ember;
+
+const dasherize = String.dasherize;
 
 let gates = [];
 
 function setupHellgate() {
-  Ember.RouterDSL.prototype.hellgate = function(name, url, options = {}) {
+  RouterDSL.prototype.hellgate = function(name, url, options = {}) {
     if (!name || !url) { throw new Error("You must provide at least a name and URL to `hellgate`."); }
     this.route(name, options);
     gates.push([name, url, options]);
   };
 
-  Ember.Router.reopen({
+  Router.reopen({
     setupRouter() {
-      let ret = this._super(...arguments);
-      let owner = getOwner(this)
+      const ret = this._super(...arguments);
+      const owner = getOwner(this);
 
-      gates.forEach(tuple => {
-        let name = tuple[0];
-        let url = tuple[1];
-        let moduleName = dasherize(name);
+      gates.forEach(([name, url]) => {
+        const moduleName = dasherize(name);
 
         owner.register(`template:${moduleName}`, template);
         owner.register(`controller:${moduleName}`, HellgateController.extend({url: url}));
       });
 
       window.escapeHell = (...args) => {
-        Ember.run(() => {
+        run(() => {
           this.send(...args);
         });
       };
