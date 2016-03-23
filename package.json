@@ -1,6 +1,6 @@
 {
   "name": "ember-hellgate",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This addon helps you migrate an old application to Ember. It lets you define routes that load plain html pages inside an Ember app.",
   "directories": {
     "doc": "doc",
