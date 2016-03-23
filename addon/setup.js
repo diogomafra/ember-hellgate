@@ -9,11 +9,26 @@ const dasherize = String.dasherize;
 
 let gates = [];
 
+function canNest(dsl) {
+  return dsl.parent && dsl.parent !== 'application';
+}
+
+function getFullName(dsl, name, resetNamespace) {
+  if (canNest(dsl) && resetNamespace !== true) {
+    return `${dsl.parent}.${name}`;
+  } else {
+    return name;
+  }
+}
+
 function setupHellgate() {
   RouterDSL.prototype.hellgate = function(name, url, options = {}) {
     if (!name || !url) { throw new Error("You must provide at least a name and URL to `hellgate`."); }
+
     this.route(name, options);
-    gates.push([name, url, options]);
+
+    let fullName = getFullName(this, name, options.resetNamespace);
+    gates.push([fullName, url]);
   };
 
   Router.reopen({
@@ -21,9 +36,8 @@ function setupHellgate() {
       const ret = this._super(...arguments);
       const owner = getOwner(this);
 
-      gates.forEach(([name, url]) => {
-        const moduleName = dasherize(name);
-
+      gates.forEach(([fullName, url]) => {
+        let moduleName = dasherize(fullName);
         owner.register(`template:${moduleName}`, template);
         owner.register(`controller:${moduleName}`, HellgateController.extend({url: url}));
       });
