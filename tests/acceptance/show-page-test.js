@@ -23,6 +23,27 @@ test('displays the correct page', function(assert) {
   });
 });
 
+test('displays hellgates inside nested routes', function(assert) {
+  visit('/nested/page');
+  andThen(function() {
+    assert.equal(find('.header-title').text(), 'Nested header');
+    iframeHasUrlWithContent(assert, '/nested-page.html', 'My nested page');
+  });
+});
+
+test('displays nested ember pages next to a hellgate', function(assert) {
+  visit('/nested');
+  andThen(function() {
+    assert.equal(find('.header-title').text(), 'Nested header');
+    assert.equal(find('span').text(), 'My nested index page');
+  });
+
+  visit('/nested/regular');
+  andThen(function() {
+    assert.equal(find('.header-title').text(), 'Nested header');
+    assert.equal(find('span').text(), 'My regular Ember page');
+  });
+});
 
 test('navigates through links', function(assert) {
   visit('/');
