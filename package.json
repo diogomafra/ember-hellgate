@@ -49,6 +49,8 @@
     "ember-addon"
   ],
   "dependencies": {
+    "@glimmer/component": "^1.0.4",
+    "@glimmer/tracking": "^1.0.4",
     "ember-cli-babel": "7.26.6",
     "ember-cli-htmlbars": "^6.0.0"
   },
