@@ -34,7 +34,6 @@
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-qunit": "^5.1.5",
     "ember-cli-release": "0.2.8",
-    "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-terser": "^4.0.2",
     "ember-disable-prototype-extensions": "^1.1.0",
