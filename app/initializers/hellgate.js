@@ -1,12 +1,10 @@
-import setupHellgate from 'ember-hellgate/setup';
+import setupHellgate from "ember-hellgate/setup";
 
 setupHellgate();
 
-export function initialize(application) {
-
-}
+export function initialize(application) {}
 
 export default {
-  name: 'ember-hellgate',
-  initialize
+  name: "ember-hellgate",
+  initialize,
 };

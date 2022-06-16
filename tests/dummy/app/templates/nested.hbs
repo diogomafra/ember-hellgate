@@ -1,10 +1,10 @@
 <h1 class="header-title">Nested header</h1>
 
-{{link-to "Index page" "nested.index"}}
-{{link-to "Regular page" "nested.regular"}}
-{{link-to "Nested page" "nested.page"}}
+<LinkTo @route="nested.index">Index page</LinkTo>
+<LinkTo @route="nested.regular">Regular page</LinkTo>
+<LinkTo @route="nested.page">Nested page</LinkTo>
 
-<br>
-<br>
+<br />
+<br />
 
 {{outlet}}

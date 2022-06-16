@@ -1,5 +1,5 @@
-import Ember from 'ember';
+import Controller from "@ember/controller";
 
-export default Ember.Controller.extend({
-  url: null
-});
+export default class HellgateController extends Controller {
+  url = null;
+}
