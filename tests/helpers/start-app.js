@@ -1,18 +1,17 @@
-import Ember from 'ember';
-import Application from '../../app';
-import config from '../../config/environment';
+import Application from "../../app";
+import config from "../../config/environment";
+import { assign } from "@ember/polyfills";
+import { run } from "@ember/runloop";
 
 export default function startApp(attrs) {
-  let application;
+  let attributes = assign({}, config.APP);
+  attributes.autoboot = false;
+  attributes = assign(attributes, attrs); // use defaults, but you can override;
 
-  let attributes = Ember.merge({}, config.APP);
-  attributes = Ember.merge(attributes, attrs); // use defaults, but you can override;
-
-  Ember.run(() => {
-    application = Application.create(attributes);
+  return run(() => {
+    let application = Application.create(attributes);
     application.setupForTesting();
     application.injectTestHelpers();
+    return application;
   });
-
-  return application;
 }

@@ -1,9 +1,9 @@
-{{link-to "Test 1" "test1" class="link1"}}
-{{link-to "Test 2" "test2" class="link2"}}
-{{link-to "Escape" "escape"}}
-{{link-to "Nested page" "nested.page"}}
-<br><br>
+<LinkTo class="link1" @route="test1">Test 1</LinkTo>
+<LinkTo class="link2" @route="test2">Test 2</LinkTo>
+<LinkTo @route="escape">Escape</LinkTo>
+<LinkTo @route="nested.page">Nested page</LinkTo>
+<br /><br />
 
-<div id="the-message">{{message}}</div>
+<div id="the-message">{{this.message}}</div>
 
 {{outlet}}

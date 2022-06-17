@@ -2,54 +2,54 @@
 module.exports = {
   scenarios: [
     {
-      name: 'default',
+      name: "default",
       bower: {
-        dependencies: { }
-      }
+        dependencies: {},
+      },
     },
     {
-      name: 'ember-1-13',
+      name: "ember-3-16",
       bower: {
         dependencies: {
-          'ember': '~1.13.0'
+          ember: "~3.16.0",
         },
         resolutions: {
-          'ember': '~1.13.0'
-        }
-      }
+          ember: "~3.16.0",
+        },
+      },
     },
     {
-      name: 'ember-release',
+      name: "ember-release",
       bower: {
         dependencies: {
-          'ember': 'components/ember#release'
+          ember: "components/ember#release",
         },
         resolutions: {
-          'ember': 'release'
-        }
-      }
+          ember: "release",
+        },
+      },
     },
     {
-      name: 'ember-beta',
+      name: "ember-beta",
       bower: {
         dependencies: {
-          'ember': 'components/ember#beta'
+          ember: "components/ember#beta",
         },
         resolutions: {
-          'ember': 'beta'
-        }
-      }
+          ember: "beta",
+        },
+      },
     },
     {
-      name: 'ember-canary',
+      name: "ember-canary",
       bower: {
         dependencies: {
-          'ember': 'components/ember#canary'
+          ember: "components/ember#canary",
         },
         resolutions: {
-          'ember': 'canary'
-        }
-      }
-    }
-  ]
+          ember: "canary",
+        },
+      },
+    },
+  ],
 };
