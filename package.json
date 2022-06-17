@@ -46,6 +46,7 @@
     "ember-try": "^2.0.0",
     "loader.js": "^4.7.0",
     "qunit": "^2.18.0",
+    "qunit-dom": "^2.0.0",
     "webpack": "^5.0.0"
   },
   "keywords": [
